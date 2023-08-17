@@ -1,4 +1,3 @@
-# This code is running but giving blur video
 import carla
 import math
 import random
@@ -88,46 +87,4 @@ finally:
     ffmpeg_process.stdin.close()
     ffmpeg_process.wait()
 
-# FFmpeg setup
-# ffmpeg_cmd = [
-#     "ffmpeg",
-#     "-y",
-#     "-f", "rawvideo",
-#     "-pixel_format", "bgr24",
-#     "-video_size", "640x480",
-#     "-framerate", "15",
-#     "-i", "-",
-#     "-c:v", "libx264",
-#     "-preset", "slow",
-#     "-pix_fmt", "yuv420p",
-#     "-f", "rtsp",
-#     "rtsp://localhost:8554/mystream"
-# ]
 
-# ffmpeg_process = subprocess.Popen(ffmpeg_cmd, stdin=subprocess.PIPE)
-
-# # Camera sensor callback
-# def camera_callback(image):
-#     image_array = np.array(image.raw_data)
-#     image_array = image_array.reshape((image.height, image.width, 4))
-#     image_array = image_array[:, :, :3]
-#     ffmpeg_process.stdin.write(image_array.tobytes())
-
-# # Add camera sensor to Carla
-# camera = world.spawn_actor(camera_bp, camera_init_trans, attach_to=vehicle)
-# camera.listen(camera_callback)
-
-# try:
-#     # Simulation loop
-#     while True:
-#         # Advance the simulation time or perform control actions
-#         world.tick()
-
-# except KeyboardInterrupt:
-#     print("User interrupted the simulation.")
-# finally:
-#     # Clean up
-#     camera.stop()
-#     camera.destroy()
-#     ffmpeg_process.stdin.close()
-#     ffmpeg_process.wait()
